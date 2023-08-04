@@ -18,7 +18,8 @@ public class ShowTypes {
             int choice = scanner.nextInt();
             switch (choice) {
                 case 1:
-                    int hight, horizontal;
+                    int hight;
+                    int horizontal;
                     Scanner scanner1 = new Scanner(System.in);
                     System.out.println("Height:");
                     hight = scanner1.nextInt();
@@ -46,6 +47,7 @@ public class ShowTypes {
                     }
                     break;
                 case 3:
+                    int hight3;
                     Scanner scanner3 = new Scanner(System.in);
                     System.out.println("Height:");
                     int hihgt3 = scanner3.nextInt();
