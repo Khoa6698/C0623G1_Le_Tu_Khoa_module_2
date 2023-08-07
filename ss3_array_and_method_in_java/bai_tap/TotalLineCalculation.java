@@ -11,27 +11,28 @@ public class TotalLineCalculation {
             sum += intArray[i][i];
         }
 
-        System.out.println("Tổng các phần tử có tọa độ ở hàng ngang và cột dọc bằng nhau: " + sum);
+        System.out.println("Tong cua cac phan tu co toa do ngang, doc bang nhau: " + sum);
 
-        int soDong, soCot;
+        int current;
+        int column;
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Nhập vào số dòng của mảng: ");
-        soDong = scanner.nextInt();
-        System.out.println("Nhập vào số cột của mảng: ");
-        soCot = scanner.nextInt();
+        System.out.println("Nhap so dong: ");
+        current = scanner.nextInt();
+        System.out.println("Nhap so cot: ");
+        column = scanner.nextInt();
 
-        int[][] A = new int[soDong][soCot];
+        int[][] A = new int[current][column];
 
-        for (int i = 0; i < soDong; i++) {
-            for (int j = 0; j < soCot; j++) {
-                System.out.print("Nhập phần tử thứ [" + i + ", " + j + "]: ");
+        for (int i = 0; i < current; i++) {
+            for (int j = 0; j < column; j++) {
+                System.out.print("Nhap phan tu thu [" + i + ", " + j + "]: ");
                 A[i][j] = scanner.nextInt();
             }
         }
 
-        System.out.println("Mảng vừa nhập: ");
-        for (int i = 0; i < soDong; i++) {
-            for (int j = 0; j < soCot; j++) {
+        System.out.println("Mang vua nhap: ");
+        for (int i = 0; i < current; i++) {
+            for (int j = 0; j < column; j++) {
                 System.out.print(A[i][j] + "\t");
             }
 
@@ -41,6 +42,6 @@ public class TotalLineCalculation {
         for (int i = 0; i < A.length; i++) {
             sum2 += A[i][i];
         }
-        System.out.println("Tổng các phần tử có tọa độ ở hàng ngang và cột dọc bằng nhau: " + sum2);
+        System.out.println("Tong cua cac phan tu co toa do ngang, doc bang nhau: " + sum2);
     }
 }
