@@ -12,5 +12,4 @@ public class Student {
 
     public String setname(){return name;}
 
-    public String getClasses(){return classes;}
 }
