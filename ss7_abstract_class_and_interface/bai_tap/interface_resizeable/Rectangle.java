@@ -1,21 +1,21 @@
 package ss7_abstract_class_and_interface.bai_tap.interface_resizeable;
 
 public class Rectangle extends Shape implements Resizeable{
-    private double width = 1.0;
-    private double length = 1.0;
+    private double width;
+    private double height;
 
     public Rectangle() {
     }
 
-    public Rectangle(double width, double length) {
+    public Rectangle(double width, double height) {
         this.width = width;
-        this.length = length;
+        this.height = height;
     }
 
-    public Rectangle(double width, double length, String color, boolean filled) {
+    public Rectangle(String color, boolean filled, double width, double height) {
         super(color, filled);
         this.width = width;
-        this.length = length;
+        this.height = height;
     }
 
     public double getWidth() {
@@ -26,34 +26,35 @@ public class Rectangle extends Shape implements Resizeable{
         this.width = width;
     }
 
-    public double getLength() {
-        return length;
+    public double getHeight() {
+        return height;
     }
 
-    public void setLength(double length) {
-        this.length = length;
+    public void setHeight(double length) {
+        this.height = length;
     }
 
     public double getArea() {
-        return width * this.length;
+        return width * this.height;
     }
 
     public double getPerimeter() {
-        return 2 * (width + this.length);
+        return 2 * (getHeight() + getWidth());
     }
 
     @Override
     public String toString() {
         return "A Rectangle with width="
                 + getWidth()
-                + " and length="
-                + getLength()
+                + " and height="
+                + getHeight()
                 + ", which is a subclass of "
                 + super.toString();
     }
 
     @Override
     public void resize(double percent) {
-        System.out.println("resize= "+percent);
+        setWidth(getWidth() + ((getWidth()/100)*percent));
+        setHeight(getHeight() + ((getHeight()/100)*percent));
     }
 }

@@ -3,42 +3,24 @@ package ss7_abstract_class_and_interface.bai_tap.interface_resizeable;
 public class Main {
 
     public static void main(String[] args) {
-        // Shape main
-        Shape shape = new Shape();
-        System.out.println(shape);
+        double percent = (int) (Math.random() * 100 + 1);
+        Shape[] shapeList = new Shape[3];
 
-        shape = new Shape("red", false);
-        System.out.println(shape);
+        Shape shape1 = new Square("yellow", true, 4.0);
+        
+        Shape shape2 = new Rectangle("red", false, 4.0, 8.0);
 
-        shape.resize(4.0);
+        Shape shape3 = new Circle("blue", false, 5.0);
 
+        shapeList[0] = shape1;
+        shapeList[1] = shape2;
+        shapeList[2] = shape3;
 
-        // Circle main
-
-        Circle circle = new Circle();
-        System.out.println(circle);
-
-        circle = new Circle(3.5);
-        System.out.println(circle);
-
-        circle = new Circle(3.5, "indigo", false);
-        System.out.println(circle);
-
-        circle.resize(5.0);
-
-
-        // RectangleTest
-
-        Rectangle rectangle = new Rectangle();
-        System.out.println(rectangle);
-
-        rectangle = new Rectangle(2.3, 5.8);
-        System.out.println(rectangle);
-
-        rectangle = new Rectangle(2.5, 3.8, "orange", true);
-        System.out.println(rectangle);
-
-        rectangle.resize(6.0);
+        for (int i = 0; i < shapeList.length; i++) {
+            System.out.println("Before: " + shapeList[i].getPerimeter());
+            shapeList[i].resize(percent);
+            System.out.println("After: " + shapeList[i].getPerimeter());
+        }
     }
 }
 

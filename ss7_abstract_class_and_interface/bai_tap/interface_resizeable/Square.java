@@ -1,8 +1,7 @@
-package ss7_abstract_class_and_interface.bai_tap.interface_colorable;
+package ss7_abstract_class_and_interface.bai_tap.interface_resizeable;
 
-import ss7_abstract_class_and_interface.bai_tap.interface_resizeable.Shape;
+public class Square extends Shape implements Resizeable {
 
-public class Square extends Shape implements Colorable {
     private double width;
 
     public Square() {
@@ -16,19 +15,12 @@ public class Square extends Shape implements Colorable {
         super(color, filled);
         this.width = width;
     }
+
     public double getWidth() {
         return width;
     }
-
     public void setWidth(double width) {
         this.width = width;
-    }
-
-    @Override
-    public String toString() {
-        return "Square{" +
-                "width=" + getWidth() +
-                '}';
     }
 
     public double getPerimeter() {
@@ -36,11 +28,16 @@ public class Square extends Shape implements Colorable {
     }
 
     @Override
-    public String howToColor() {
-        if(super.isFilled()) {
-            return getColor();
-        }
-
-        return "";
+    public String toString() {
+        return "A Shape with color of "
+                + getColor()
+                + " and "
+                + (isFilled() ? "filled" : "not filled");
     }
+
+    @Override
+    public void resize(double percent) {
+        setWidth(getWidth() + ((getWidth()/100)*percent));
+    }
+
 }
