@@ -8,11 +8,12 @@ public class MyListTest {
         myList.add(4, "Giang");
         myList.add(5, "An");
         myList.add(8, "Truong");
-
-
-        myList.add("Khoa");
         System.out.println(myList);
+
+        System.out.println(myList.get(1));
         myList.remove(9);
+        System.out.println(myList);
+        myList.clear();
         System.out.println(myList);
     }
 }

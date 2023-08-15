@@ -49,7 +49,7 @@ public class MyList<E> {
         return true;
     }
 
-    public void remove(int index) {
+    public E remove(int index) {
         if (index < 0 || index >= size()) {
             throw new IndexOutOfBoundsException();
         } else {
@@ -59,6 +59,7 @@ public class MyList<E> {
             elements[size - 1] = null;
             size--;
         }
+        return (E) elements[index];
     }
 
     public void ensureCapacity(int minCapacity) {
@@ -68,7 +69,21 @@ public class MyList<E> {
         int newSize = elements.length * minCapacity;
         elements = Arrays.copyOf(elements, newSize);
     }
-    
+
+    public E get(int i) {
+        if (i < 0 || i >= size()){
+            throw new IndexOutOfBoundsException();
+        } else {
+            return (E) elements[i];
+        }
+    }
+
+    public void clear() {
+        for (int i = 0; i < size(); i++) {
+            elements[i] = null;
+        }
+    }
+
 
     @Override
     public String toString() {
