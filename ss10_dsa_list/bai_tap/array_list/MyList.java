@@ -18,7 +18,7 @@ public class MyList<E> {
     }
 
     public int size() {
-        return elements.length;
+        return size;
     }
 
     public E clone() {
