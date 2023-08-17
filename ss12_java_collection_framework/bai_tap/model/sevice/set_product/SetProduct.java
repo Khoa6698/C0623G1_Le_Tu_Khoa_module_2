@@ -1,27 +1,19 @@
 package ss12_java_collection_framework.bai_tap.model.sevice.set_product;
 
 import ss12_java_collection_framework.bai_tap.model.entity.Product;
-import ss12_java_collection_framework.bai_tap.model.repositori.DbForSaveProduct;
-import ss12_java_collection_framework.bai_tap.model.sevice.get_product.IGetProduct;
-
-import java.util.List;
+import ss12_java_collection_framework.bai_tap.model.repositori.IProductRepository;
 
 public class SetProduct implements ISetProduct {
 
-    IGetProduct iGetProduct;
+    private final IProductRepository iProductRepository;
 
-    public SetProduct(IGetProduct iGetProduct) {
-        this.iGetProduct = iGetProduct;
+    public SetProduct(IProductRepository iProductRepository) {
+        this.iProductRepository = iProductRepository;
     }
 
     @Override
     public void setProduct(int id, Product product) {
-        List<Product> productList = iGetProduct.getProducts();
-        for (Product product1 : productList) {
-            if (product1.getId() == id) {
-                product1.setName(product.getName());
-            }
-        }
+        iProductRepository.setProduct(id, product);
     }
 }
 

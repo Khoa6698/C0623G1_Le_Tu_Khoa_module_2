@@ -22,14 +22,14 @@ public class ProductManager {
         boolean b = true;
         while (b) {
             System.out.println("-------------------------------------");
-            System.out.println("------Chương trình quản lý sản-------");
-            System.out.println("Chọn chức năng theo số (để tiếp tục):");
-            System.out.println("---1.Thêm sản phẩm:------------------");
-            System.out.println("---2.Sửa thông tin sản phẩm theo id---");
-            System.out.println("---3.Xoá sản phẩm theo id------------");
-            System.out.println("---4.Hiển thị danh sách sản phẩm-----");
-            System.out.println("---5.Tìm sản phẩm theo tên -----");
-            System.out.println("---6.Sắp xếp theo giá -----");
+            System.out.println("------ Chương trình quản lý sản phẩm -------");
+            System.out.println("Chọn chức năng theo số (để tiếp tục): ");
+            System.out.println("---1. Thêm sản phẩm ---");
+            System.out.println("---2. Sửa thông tin sản phẩm theo id ---");
+            System.out.println("---3. Xoá sản phẩm theo id ---");
+            System.out.println("---4. Hiển thị danh sách sản phẩm ---");
+            System.out.println("---5. Tìm sản phẩm theo tên ---");
+            System.out.println("---6. Sắp xếp theo giá ---");
             System.out.println("Chọn chức năng:");
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -66,7 +66,7 @@ public class ProductManager {
     private Product removeProduct() throws ParseException {
         System.out.println("Nhâp mã muốn xóa: ");
         int id = Integer.parseInt(scanner.nextLine());
-        if (isExistProductById(id)) {
+        if (controller.findProductById(id)) {
             System.out.println("1. Yes");
             System.out.println("2. No");
             int type = scanner.nextInt();
@@ -90,13 +90,13 @@ public class ProductManager {
 
         for (Product product : productList) {
             System.out.println("id: " + product.getId());
-            System.out.println("name = " + product.getName());
-            System.out.println("price = " + product.getPrice());
-            System.out.println("------------------------------");
+            System.out.println("name :" + product.getName());
+            System.out.println("price: " + product.getPrice());
+            System.out.println("-----------------------------");
         }
     }
 
-    private void editProductById() throws ParseException {
+    private void editProductById() {
         System.out.println("Nhập id muốn sửa: ");
         int id = Integer.parseInt(scanner.nextLine());
         System.out.println("Nhập tên sản phẩm mới: ");
@@ -111,8 +111,8 @@ public class ProductManager {
         Product product = controller.findByProductName(name);
         System.out.println("------------------------------");
         System.out.println("id: " + product.getId());
-        System.out.println("name = " + product.getName());
-        System.out.println("price = " + product.getPrice());
+        System.out.println("name: " + product.getName());
+        System.out.println("price: " + product.getPrice());
     }
 
     private void sortProductByPrice() {
@@ -121,28 +121,26 @@ public class ProductManager {
         System.out.println("2. Giảm dần");
         int type = Integer.parseInt(scanner.nextLine());
         if (type == 1) {
-            productList.sort((o1, o2) -> Double.compare(o1.getPrice(), o2.getPrice()));
+            productList.sort(Comparator.comparingDouble(Product::getPrice));
+            System.out.println("Danh sách sản phẩm tăng dần: ");
             for (Product product : productList) {
                 System.out.println("id: " + product.getId());
-                System.out.println("name = " + product.getName());
-                System.out.println("price = " + product.getPrice());
+                System.out.println("name: " + product.getName());
+                System.out.println("price: " + product.getPrice());
                 System.out.println("------------------------------");
             }
         } else {
-                productList.sort(new Comparator<Product>() {
-                @Override
-                public int compare(Product o1, Product o2) {
-                    return Double.compare(o2.getPrice(), o1.getPrice());
-                }
-            });
-            for (Product product : productList){
-                System.out.println("id: "+ product.getId());
-                System.out.println("name = "+product.getName());
-                System.out.println("price = "+product.getPrice());
+            productList.sort((o1, o2) -> Double.compare(o2.getPrice(), o1.getPrice()));
+            System.out.println("Danh sách sản phẩm giảm dần: ");
+            for (Product product : productList) {
+                System.out.println("id: " + product.getId());
+                System.out.println("name: " + product.getName());
+                System.out.println("price: " + product.getPrice());
                 System.out.println("------------------------------");
             }
         }
     }
+
 
     private boolean isExistProductById(int id) {
         List<Product> products = controller.getProductList();

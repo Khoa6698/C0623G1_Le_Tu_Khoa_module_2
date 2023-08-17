@@ -1,14 +1,18 @@
 package ss12_java_collection_framework.bai_tap.model.sevice.save_product;
 
 import ss12_java_collection_framework.bai_tap.model.entity.Product;
-import ss12_java_collection_framework.bai_tap.model.repositori.DbForSaveProduct;
+import ss12_java_collection_framework.bai_tap.model.repositori.IProductRepository;
 
 public class SaveProduct implements ISaveProduct {
 
+    private final IProductRepository iProductRepository;
+
+    public SaveProduct(IProductRepository iProductRepository) {
+        this.iProductRepository = iProductRepository;
+    }
 
     @Override
     public void save(Product product) {
-        Product product1 = new Product(product.getId(), product.getName(), product.getPrice());
-        DbForSaveProduct.productList.add(product1);
+        iProductRepository.save(product);
     }
 }

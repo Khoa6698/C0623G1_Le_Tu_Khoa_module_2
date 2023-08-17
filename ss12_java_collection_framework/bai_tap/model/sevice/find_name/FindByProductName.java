@@ -1,20 +1,17 @@
 package ss12_java_collection_framework.bai_tap.model.sevice.find_name;
 
 import ss12_java_collection_framework.bai_tap.model.entity.Product;
-import ss12_java_collection_framework.bai_tap.model.repositori.DbForSaveProduct;
-
-import java.util.List;
+import ss12_java_collection_framework.bai_tap.model.repositori.IProductRepository;
 
 public class FindByProductName implements IFindByProductName{
+    private final IProductRepository iProductRepository;
+
+    public FindByProductName(IProductRepository iProductRepository) {
+        this.iProductRepository = iProductRepository;
+    }
+
     @Override
     public Product product(String name) {
-        List<Product> products = DbForSaveProduct.productList;
-
-        for (Product product : products) {
-            if (product.getName().equals(name)) {
-                return product;
-            }
-        }
-        return null;
+        return iProductRepository.getProductByName(name);
     }
 }
