@@ -1,4 +1,4 @@
-package ss12_java_collection_framework.bai_tap.model.repositori;
+package ss12_java_collection_framework.bai_tap.model.repository;
 
 import ss12_java_collection_framework.bai_tap.model.entity.Product;
 
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class IProductRepositoryImpl implements IProductRepository {
+public class ProductRepositoryImpl implements IProductRepository {
     private static List<Product> productList = new ArrayList<>();
 
     public void IProductRepositoryImpl() {

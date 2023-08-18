@@ -1,4 +1,4 @@
-package ss12_java_collection_framework.bai_tap.model.repositori;
+package ss12_java_collection_framework.bai_tap.model.repository;
 
 import ss12_java_collection_framework.bai_tap.model.entity.Product;
 

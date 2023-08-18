@@ -1,8 +1,8 @@
 package ss12_java_collection_framework.bai_tap.view;
 
 import ss12_java_collection_framework.bai_tap.controller.ProductController;
-import ss12_java_collection_framework.bai_tap.model.repositori.IProductRepository;
-import ss12_java_collection_framework.bai_tap.model.repositori.IProductRepositoryImpl;
+import ss12_java_collection_framework.bai_tap.model.repository.IProductRepository;
+import ss12_java_collection_framework.bai_tap.model.repository.ProductRepositoryImpl;
 import ss12_java_collection_framework.bai_tap.model.sevice.delete_product.DeleteProduct;
 import ss12_java_collection_framework.bai_tap.model.sevice.delete_product.IDeleteProduct;
 import ss12_java_collection_framework.bai_tap.model.sevice.find_id.FindProductById;
@@ -20,7 +20,7 @@ import java.text.ParseException;
 
 public class Run {
     public static void main(String[] args) {
-        IProductRepository iProductRepository = new IProductRepositoryImpl();
+        IProductRepository iProductRepository = new ProductRepositoryImpl();
         IGetProduct iGetProduct = new GetProduct(iProductRepository);
         ISaveProduct saveProduct = new SaveProduct(iProductRepository);
         ISetProduct setProduct = new SetProduct(iProductRepository);
