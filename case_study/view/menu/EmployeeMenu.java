@@ -1,13 +1,14 @@
-package case_study.view.employee;
+package case_study.view.menu;
 
 import case_study.controller.EmployeeController;
 import case_study.model.entity.employee.Employee;
 import case_study.utils.Regex;
 import case_study.view.menu.Menu;
 
+import java.util.List;
 import java.util.Scanner;
 
-public class EmployeeMenu {
+public class   EmployeeMenu {
     private final Scanner scanner = new Scanner(System.in);
     private final EmployeeController employeeController = new EmployeeController();
 
@@ -15,40 +16,52 @@ public class EmployeeMenu {
     public void employeeRender() {
         int optionEmployee;
         do {
-//            employeeRender();
+            employeeManagement();
             optionEmployee = Integer.parseInt(scanner.nextLine());
-        } while (optionEmployee <= 0 && optionEmployee > 6);
+            switch (optionEmployee) {
+                case 1:
+                    List<Employee> employees = this.employeeController.getEmployee();
+                    for (Employee e : employees) {
+                        System.out.println(e);
+                    }
+                    break;
+                case 2:
+                    Employee newEmployee = createEmployee();
+                    employeeController.createEmployee(newEmployee);
+                    break;
+                case 3:
+                    employeeController.updateEmployee(inputIdEmployee(), createEmployee());
+                    break;
+                case 4:
+                    employeeController.deleteEmployee(inputIdEmployee());
+                    break;
+                case 5:
+                    for (Employee e : employeeController.searchEmployee(inputNameEmployee())){
+                        System.out.println(e);
+                    }
+                    break;
+                case 6:
+                    break;
+                default:
+                    System.out.println("Tam biet!");
+            }
 
-        switch (optionEmployee) {
-            case 1:
-                employeeController.getEmployee();
-                break;
-            case 2:
-                Employee newEmployee = createEmployee();
-                employeeController.createEmployee(newEmployee);
-
-                break;
-            case 3:
-//                updateEmployee();
-                break;
-            case 4:
-//                deleteEmployee();
-                break;
-            case 5:
-//                searchEmployee();
-                break;
-            case 6:
-                Menu.displayMainMenu();
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + optionEmployee);
-        }
+        } while (optionEmployee !=6);
     }
 
-    public void getEmployee() {
-        this.employeeController.getEmployee();
-    }
 
+    public static void employeeManagement(){
+        System.out.println("===Employee Management===");
+        System.out.println("1 Display list employees");
+        System.out.println("2 Add new employee");
+        System.out.println("3 Edit employee");
+        System.out.println("4 Delete employee");
+        System.out.println("5 Search by name employee");
+        System.out.println("6 Return main menu");
+        System.out.println(" Lựa chọn theo số");
+        System.out.println("==========================");
+
+    }
     private Employee createEmployee() {
         Employee employee = new Employee();
         System.out.println("Nhap id nhan vien: ");
@@ -72,7 +85,9 @@ public class EmployeeMenu {
             birthDay = scanner.next();
         }
         employee.setBirthDay(birthDay);
-
+        System.out.println("Nhap gioi tinh cua ban: ");
+        String sex = scanner.nextLine();
+        employee.setSex(sex);
         System.out.println("Nhap CMND cua ban: ");
         String idCard = scanner.nextLine();
         while (!Regex.regexIdCardEmployee(idCard)) {
@@ -87,6 +102,9 @@ public class EmployeeMenu {
             phone = scanner.next();
         }
         employee.setPhone(phone);
+        System.out.println("Nhap email cua ban:");
+        String email = scanner.nextLine();
+        employee.setEmail(email);
         System.out.println("Nhap trinh đo cua ban theo so thu tu: ");
         System.out.println("1. Trung cap");
         System.out.println("2. Cao dang ");
@@ -100,16 +118,16 @@ public class EmployeeMenu {
         } while (level <= 0 || level > 4);
         switch (level) {
             case 1:
-                levelString = "intermediate";
+                levelString = "Intermediate";
                 break;
             case 2:
-                levelString = "college";
+                levelString = "College";
                 break;
             case 3:
-                levelString = "university";
+                levelString = "University";
                 break;
             case 4:
-                levelString = "afterUniversity";
+                levelString = "AfterUniversity";
                 break;
         }
         employee.setLevelType(levelString);
@@ -130,22 +148,22 @@ public class EmployeeMenu {
 
         switch (number2) {
             case 1:
-                positionString = "lễ tân";
+                positionString = "Receptionists";
                 break;
             case 2:
-                positionString = "staff";
+                positionString = "Staff";
                 break;
             case 3:
-                positionString = "expert";
+                positionString = "Expert";
                 break;
             case 4:
-                positionString = "supervisory";
+                positionString = "Supervisory";
                 break;
             case 5:
-                positionString = "management";
+                positionString = "Management";
                 break;
             case 6:
-                positionString = "manager";
+                positionString = "Manager";
                 break;
         }
         employee.setPositionType(positionString);
@@ -157,5 +175,23 @@ public class EmployeeMenu {
         }
         employee.setSalary(salary);
         return employee;
+    }
+
+    public String inputIdEmployee() {
+        String string;
+        do {
+            System.out.println("Nhap ID nhan vien:");
+            string = scanner.nextLine();
+        } while (!Regex.regexIdEmployee(string));
+        return string;
+    }
+
+    public String inputNameEmployee() {
+        String name;
+        do {
+            System.out.println("Nhap name nhan vien:");
+            name = scanner.nextLine();
+        } while (!Regex.CheckNameEmployee(name));
+        return name;
     }
 }

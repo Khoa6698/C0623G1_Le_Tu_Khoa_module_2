@@ -75,4 +75,10 @@ public class Regex {
         return m.matches();
     }
 
+    public static boolean regexIdCustomer(String input) {
+        String regex = "^KH-[0-9]{4}$";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(input);
+        return m.matches();
+    }
 }

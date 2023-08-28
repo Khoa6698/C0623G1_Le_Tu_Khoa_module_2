@@ -14,9 +14,7 @@ public class Employee {
 
     public Employee(){}
 
-    public Employee(String staffId, String staffName, String birthDay,
-                    String sex, String identityCard, String phone, String email,
-                    String levelType, String positionType, double salary) {
+    public Employee(String staffId, String staffName, String birthDay, String sex, String identityCard, String phone, String email, String levelType, String positionType, double salary) {
         this.staffId = staffId;
         this.staffName = staffName;
         this.birthDay = birthDay;
@@ -29,7 +27,7 @@ public class Employee {
         this.salary = salary;
     }
 
-    public String getStaffId(String id) {
+    public String getStaffId() {
         return staffId;
     }
 
@@ -37,7 +35,7 @@ public class Employee {
         this.staffId = staffId;
     }
 
-    public String getStaffName(String name) {
+    public String getStaffName() {
         return staffName;
     }
 
@@ -53,7 +51,7 @@ public class Employee {
         this.birthDay = birthDay;
     }
 
-    public String isSex() {
+    public String getSex() {
         return sex;
     }
 

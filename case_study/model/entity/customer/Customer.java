@@ -6,14 +6,15 @@ public class Customer {
     private String birthDay;
     private String sex;
     private String identityCard;
-    private int phone;
+    private String phone;
     private String email;
     private String customerType;
     private String address;
 
+    public Customer(){}
     public Customer(String id, String name, String birthDay,
                     String sex, String identityCard,
-                    int phone, String email,
+                    String phone, String email,
                     String customerType, String address) {
         Id = id;
         Name = name;
@@ -66,11 +67,11 @@ public class Customer {
         this.identityCard = identityCard;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

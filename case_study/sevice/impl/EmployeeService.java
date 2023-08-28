@@ -21,8 +21,8 @@ public class EmployeeService implements IEmployeeService {
     }
 
     @Override
-    public void updateEmployee(Employee employee) {
-        this.employeeRepository.updateEmployee(employee);
+    public void updateEmployee(String id,Employee employee) {
+        this.employeeRepository.updateEmployee(id,employee);
     }
 
     @Override

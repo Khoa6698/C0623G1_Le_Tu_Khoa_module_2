@@ -9,9 +9,23 @@ import java.util.List;
 public class EmployeeController {
     private static final IEmployeeService employeeService = new EmployeeService();
 
-    public void getEmployee(){this.employeeService.getEmployee();}
-    public void createEmployee(Employee employee){this.employeeService.createEmployee(employee);}
-    public void updateEmployee(Employee employee){this.employeeService.updateEmployee(employee);}
-    public boolean deleteEmployee(String id){return this.employeeService.deleteEmployee(id);}
-    public List<Employee> searchEmployee(String name){return this.employeeService.searchEmployee(name);}
+    public List<Employee> getEmployee() {
+        return this.employeeService.getEmployee();
+    }
+
+    public void createEmployee(Employee employee) {
+        this.employeeService.createEmployee(employee);
+    }
+
+    public void updateEmployee(String id, Employee employee) {
+        this.employeeService.updateEmployee(id, employee);
+    }
+
+    public boolean deleteEmployee(String id) {
+        return this.employeeService.deleteEmployee(id);
+    }
+
+    public List<Employee> searchEmployee(String name) {
+        return this.employeeService.searchEmployee(name);
+    }
 }
