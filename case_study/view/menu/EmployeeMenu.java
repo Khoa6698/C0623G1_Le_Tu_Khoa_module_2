@@ -3,7 +3,6 @@ package case_study.view.menu;
 import case_study.controller.EmployeeController;
 import case_study.model.entity.employee.Employee;
 import case_study.utils.Regex;
-import case_study.view.menu.Menu;
 
 import java.util.List;
 import java.util.Scanner;
@@ -28,6 +27,7 @@ public class   EmployeeMenu {
                 case 2:
                     Employee newEmployee = createEmployee();
                     employeeController.createEmployee(newEmployee);
+                    System.out.println("Successfully added new");
                     break;
                 case 3:
                     employeeController.updateEmployee(inputIdEmployee(), createEmployee());
@@ -43,7 +43,7 @@ public class   EmployeeMenu {
                 case 6:
                     break;
                 default:
-                    System.out.println("Tam biet!");
+                    System.out.println("Goodbye!");
             }
 
         } while (optionEmployee !=6);
@@ -58,52 +58,56 @@ public class   EmployeeMenu {
         System.out.println("4 Delete employee");
         System.out.println("5 Search by name employee");
         System.out.println("6 Return main menu");
-        System.out.println(" Lựa chọn theo số");
         System.out.println("==========================");
+        System.out.println("Select method by number: ");
 
     }
     private Employee createEmployee() {
         Employee employee = new Employee();
-        System.out.println("Nhap id nhan vien: ");
+        System.out.println("Enter id staff: ");
         String id = scanner.nextLine();
         while (!Regex.regexIdEmployee(id)) {
-            System.out.println("Id ban nhap khong hop le");
+            System.out.println("The id you entered is not valid!");
             id = scanner.next();
         }
-        employee.setStaffId(id);
-        System.out.println("Nhap name nhan vien: ");
+        employee.setIdStaff(id);
+        System.out.println("Enter name staff: ");
         String name = scanner.nextLine();
         while (!Regex.CheckNameEmployee(name)) {
-            System.out.println("Name ban nhap khong hop le");
+            System.out.println("The name you entered is not valid!");
             name = scanner.next();
         }
-        employee.setStaffName(name);
-        System.out.println("Nhập ngay sinh: ");
+        employee.setNameStaff(name);
+        System.out.println("Enter birthday: ");
         String birthDay = scanner.nextLine();
         while (!Regex.calculateAgeWithJodaTime(Regex.covertStringToDate(birthDay))) {
-            System.out.println("Ban chua du tuoi!");
+            System.out.println("You are not old enough!");
             birthDay = scanner.next();
         }
         employee.setBirthDay(birthDay);
-        System.out.println("Nhap gioi tinh cua ban: ");
+        System.out.println("Enter your gender: ");
         String sex = scanner.nextLine();
         employee.setSex(sex);
-        System.out.println("Nhap CMND cua ban: ");
+        System.out.println("Enter your ID card: ");
         String idCard = scanner.nextLine();
         while (!Regex.regexIdCardEmployee(idCard)) {
-            System.out.println("Id card cua ban khong hop le!");
+            System.out.println("The id card you entered is not valid! !");
             idCard = scanner.next();
         }
         employee.setIdentityCard(idCard);
-        System.out.println("Nhap so dien thoai cua ban: ");
+        System.out.println("Enter your phone: ");
         String phone = scanner.nextLine();
         while (!Regex.regexPhoneNumberEmployee(phone)) {
-            System.out.println("So dien thoai khong hop le!");
+            System.out.println("The phone number you entered is not valid!");
             phone = scanner.next();
         }
         employee.setPhone(phone);
-        System.out.println("Nhap email cua ban:");
+        System.out.println("Enter your email:");
         String email = scanner.nextLine();
+        while (!Regex.regexGmail(email)){
+            System.out.println("Email is not valid!");
+            email = scanner.next();
+        }
         employee.setEmail(email);
         System.out.println("Nhap trinh đo cua ban theo so thu tu: ");
         System.out.println("1. Trung cap");
@@ -114,6 +118,7 @@ public class   EmployeeMenu {
         String levelString = null;
         int level;
         do {
+            System.out.println("Enter your selection: ");
             level = Integer.parseInt(scanner.nextLine());
         } while (level <= 0 || level > 4);
         switch (level) {
@@ -131,18 +136,18 @@ public class   EmployeeMenu {
                 break;
         }
         employee.setLevelType(levelString);
-        System.out.println("Nhap vi trí cua ban theo so thu tu duoc neu:");
-        System.out.println("1. Le tan");
-        System.out.println("2. Phuc vu");
-        System.out.println("3. Chuyen vien");
-        System.out.println("4. Giam sat");
-        System.out.println("5. Quan ly");
-        System.out.println("6. Giam doc");
+        System.out.println("Choose by number below  :");
+        System.out.println("1. Receptionists");
+        System.out.println("2. Staff");
+        System.out.println("3. Expert");
+        System.out.println("4. Supervisory");
+        System.out.println("5. Management");
+        System.out.println("6. Manager");
         System.out.println("-----------------------");
         String positionString = null;
         int number2;
         do {
-            System.out.println("Nhap lua chon cua ban: ");
+            System.out.println("Enter your selection: ");
             number2 = Integer.parseInt(scanner.nextLine());
         } while (number2 <= 0 || number2 > 6);
 
@@ -167,10 +172,10 @@ public class   EmployeeMenu {
                 break;
         }
         employee.setPositionType(positionString);
-        System.out.println("Nhap luong cua ban: ");
+        System.out.println("enter your salary: ");
         double salary = Double.parseDouble(scanner.nextLine());
         if (salary <= 0) {
-            System.out.println("Luong khong the nho hoac bang 0!");
+            System.out.println("salary cannot be 0!");
             salary = Double.parseDouble(scanner.next());
         }
         employee.setSalary(salary);
@@ -180,7 +185,7 @@ public class   EmployeeMenu {
     public String inputIdEmployee() {
         String string;
         do {
-            System.out.println("Nhap ID nhan vien:");
+            System.out.println("Enter id staff:");
             string = scanner.nextLine();
         } while (!Regex.regexIdEmployee(string));
         return string;
@@ -189,7 +194,7 @@ public class   EmployeeMenu {
     public String inputNameEmployee() {
         String name;
         do {
-            System.out.println("Nhap name nhan vien:");
+            System.out.println("Enter name staff:");
             name = scanner.nextLine();
         } while (!Regex.CheckNameEmployee(name));
         return name;

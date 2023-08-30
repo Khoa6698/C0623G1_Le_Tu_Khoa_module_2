@@ -24,8 +24,9 @@ public class CustomerMenu {
                     }
                     break;
                 case 2:
-                    Customer newCustomer = new Customer();
+                    Customer newCustomer = createCustomer();
                     customerController.createCustomer(newCustomer);
+                    System.out.println("Successfully added new");
                     break;
                 case 3:
                     customerController.updateCustomer(inputIdCustomer(),createCustomer());
@@ -41,7 +42,7 @@ public class CustomerMenu {
                 case 6:
                     break;
                 default:
-                    System.out.println("Tam biet!");
+                    System.out.println("Goodbye!");
             }
         } while (optionCustomer != 6);
     }
@@ -55,63 +56,68 @@ public class CustomerMenu {
         System.out.println("5. Search by name customer");
         System.out.println("6. Return main menu");
         System.out.println("---------------------------");
-        System.out.println("Nhap lua chon cua ban theo so: ");
+        System.out.println("Select method by number: ");
     }
 
     private Customer createCustomer() {
         Customer customer = new Customer();
-        System.out.println("Nhap id Khach hang: ");
+        System.out.println("Enter id customer: ");
         String id = scanner.nextLine();
         while (!Regex.regexIdCustomer(id)) {
-            System.out.println("Id ban nhap khong hop le");
+            System.out.println("The id you entered is not valid! ");
             id = scanner.next();
         }
         customer.setId(id);
-        System.out.println("Nhap name Khach hang: ");
+        System.out.println("Enter name customer: ");
         String name = scanner.nextLine();
         while (!Regex.CheckNameEmployee(name)) {
-            System.out.println("Name ban nhap khong hop le");
+            System.out.println("The name you enteredisis not valid!");
             name = scanner.next();
         }
         customer.setName(name);
-        System.out.println("Nhập ngay sinh khach hang: ");
+        System.out.println("Enter birthday customer: ");
         String birthDay = scanner.nextLine();
         while (!Regex.calculateAgeWithJodaTime(Regex.covertStringToDate(birthDay))) {
-            System.out.println("Ban chua du tuoi!");
+            System.out.println("You are not old enough!");
             birthDay = scanner.next();
         }
         customer.setBirthDay(birthDay);
-        System.out.println("Nhap gioi tinh cua ban: ");
+        System.out.println("Enter your gender: ");
         String sex = scanner.nextLine();
         customer.setSex(sex);
-        System.out.println("Nhap CMND cua ban: ");
+        System.out.println("Enter ID card customer: ");
         String idCard = scanner.nextLine();
         while (!Regex.regexIdCardEmployee(idCard)) {
-            System.out.println("Id card cua ban khong hop le!");
+            System.out.println("The ID card you entered is not valid!!");
             idCard = scanner.next();
         }
         customer.setIdentityCard(idCard);
-        System.out.println("Nhap so dien thoai cua ban: ");
+        System.out.println("Enter phone number: ");
         String phone = scanner.nextLine();
         while (!Regex.regexPhoneNumberEmployee(phone)) {
-            System.out.println("So dien thoai khong hop le!");
+            System.out.println("The number phone you entered is not valid!");
             phone = scanner.next();
         }
         customer.setPhone(phone);
-        System.out.println("Nhap email cua ban:");
+        System.out.println("Enter gmail customer:");
         String email = scanner.nextLine();
+        while (!Regex.regexGmail(email)){
+            System.out.println("Email is not valid!");
+            email = scanner.next();
+        }
         customer.setEmail(email);
-        System.out.println("Nhap trinh đo cua ban theo so thu tu: ");
-        System.out.println("1. Trung cap");
-        System.out.println("2. Cao dang ");
-        System.out.println("3. Dai hoc ");
-        System.out.println("4. Sau dai hoc ");
+        System.out.println("Type of Customer includes: ");
+        System.out.println("1. Diamond");
+        System.out.println("2. Platinum ");
+        System.out.println("3. Gold ");
+        System.out.println("4. Silver ");
+        System.out.println("5. Member ");
         System.out.println("------------------------");
         String customerType = null;
         int level;
         do {
             level = Integer.parseInt(scanner.nextLine());
-        } while (level != 5);
+        } while (level <= 0||level>5);
         switch (level) {
             case 1 -> customerType = "Diamond";
             case 2 -> customerType = "Platinum";
@@ -120,7 +126,7 @@ public class CustomerMenu {
             case 5 -> customerType = "Member";
         }
         customer.setCustomerType(customerType);
-        System.out.println("Nhap dia chi khach hang:");
+        System.out.println("Enter customer address:");
         String address = scanner.nextLine();
         customer.setAddress(address);
         return customer;
@@ -129,7 +135,7 @@ public class CustomerMenu {
     public String inputIdCustomer(){
         String string;
         do {
-            System.out.println("Nhap id khach hang muon tiem kiem");
+            System.out.println("Enter the customer id you want to search: ");
             string = scanner.nextLine();
         }while (!Regex.regexIdCustomer(string));
         return string;
@@ -137,7 +143,7 @@ public class CustomerMenu {
     public String inputNameCustomer(){
         String name;
         do {
-            System.out.println("Nhap name muon tiem kiem");
+            System.out.println("Enter the customer name is you want to search: ");
             name = scanner.nextLine();
         }while (!Regex.CheckNameEmployee(name));
         return name;

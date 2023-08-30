@@ -1,16 +1,16 @@
 package case_study.model.entity.facility;
 
 public abstract class Facility {
-    private int id;
+    private String id;
     private String name;
-    private double area;
-    private double price;
-    private int limitPeopleAmount;
+    private String area;
+    private String price;
+    private String limitPeopleAmount;
     private String hireType;
 
     public Facility(){}
 
-    public Facility(int id, String name, double area, double price, int limitPeopleAmount, String hireType) {
+    public Facility( String id, String name, String area, String price, String limitPeopleAmount, String hireType) {
         this.id = id;
         this.name = name;
         this.area = area;
@@ -19,11 +19,11 @@ public abstract class Facility {
         this.hireType = hireType;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -35,27 +35,27 @@ public abstract class Facility {
         this.name = name;
     }
 
-    public double getArea() {
+    public String getArea() {
         return area;
     }
 
-    public void setArea(double area) {
+    public void setArea(String area) {
         this.area = area;
     }
 
-    public double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
-    public int getLimitPeopleAmount() {
+    public String getLimitPeopleAmount() {
         return limitPeopleAmount;
     }
 
-    public void setLimitPeopleAmount(int limitPeopleAmount) {
+    public void setLimitPeopleAmount(String limitPeopleAmount) {
         this.limitPeopleAmount = limitPeopleAmount;
     }
 

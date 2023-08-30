@@ -1,16 +1,20 @@
 package case_study.model.entity.facility;
 
 public class House extends Facility {
+    private static int idHouse = 1000;
     private String roomStandardHouse;
-    private int numFloorsHouse;
+    private String numFloorsHouse;
 
-    public House(String roomStandardHouse, int numFloorsHouse) {
+
+    public House( String parseDouble, String price, String limitPeopleAmount, String hireType, String roomStandardHouse, String numFloorsHouse) {
         this.roomStandardHouse = roomStandardHouse;
         this.numFloorsHouse = numFloorsHouse;
     }
 
-    public House(int id, String name, double area, double price, int limitPeopleAmount, String hireType, String roomStandardHouse, int numFloorsHouse) {
+    public House( String id, String name, String area, String price, String limitPeopleAmount, String hireType, String roomStandardHouse, String numFloorsHouse) {
         super(id, name, area, price, limitPeopleAmount, hireType);
+        idHouse++;
+        this.setId("SVHO-"+idHouse);
         this.roomStandardHouse = roomStandardHouse;
         this.numFloorsHouse = numFloorsHouse;
     }
@@ -23,17 +27,17 @@ public class House extends Facility {
         this.roomStandardHouse = roomStandardHouse;
     }
 
-    public int getNumFloorsHouse() {
+    public String getNumFloorsHouse() {
         return numFloorsHouse;
     }
 
-    public void setNumFloorsHouse(int numFloorsHouse) {
+    public void setNumFloorsHouse(String     numFloorsHouse) {
         this.numFloorsHouse = numFloorsHouse;
     }
 
     @Override
     public String toString() {
-        return "House{" +
+        return "House{" +super.toString()+
                 "roomStandardHouse=" + roomStandardHouse +
                 ", numFloorsHouse=" + numFloorsHouse +
                 '}';

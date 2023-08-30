@@ -36,7 +36,7 @@ public class EmployeeRepository implements IEmployeeRepository {
         List<Employee> employees = this.getEmployee();
         int index;
         for (Employee p : employees) {
-            if (p.getStaffId().equals(id)){
+            if (p.getIdStaff().equals(id)){
                 index = employees.indexOf(p);
                 employees.set(index, employee);
             }
@@ -48,7 +48,7 @@ public class EmployeeRepository implements IEmployeeRepository {
     public boolean deleteEmployee(String id) {
         List<Employee> employees = this.getEmployee();
         for (Employee p : employees) {
-            if (p.getStaffId().equals(id)) {
+            if (p.getIdStaff().equals(id)) {
                 employees.remove(p);
                 ReaderAndWriter.writer(EMPLOYEE_PATHNAME, this.convertToString(employees));
                 return true;
@@ -63,7 +63,7 @@ public class EmployeeRepository implements IEmployeeRepository {
         List<Employee> employees = this.getEmployee();
         List<Employee> result = new ArrayList<>();
         for (Employee p : employees){
-            if(p.getStaffName().contains(name)){
+            if(p.getNameStaff().contains(name)){
                 result.add(p);
             }
         }
@@ -73,7 +73,7 @@ public class EmployeeRepository implements IEmployeeRepository {
     private List<String> convertToString(List<Employee> employee){
         List<String> strings = new ArrayList<>();
         for (Employee p : employee){
-            strings.add(p.getStaffId()+COMMA+p.getStaffName()+COMMA
+            strings.add(p.getIdStaff()+COMMA+p.getNameStaff()+COMMA
                     +p.getBirthDay()+COMMA+p.getSex()
                     +COMMA+p.getIdentityCard()+COMMA+p.getPhone()+COMMA
                     +p.getEmail()+COMMA+p.getLevelType()+COMMA

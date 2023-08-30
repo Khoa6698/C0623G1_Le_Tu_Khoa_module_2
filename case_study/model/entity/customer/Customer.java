@@ -1,8 +1,8 @@
 package case_study.model.entity.customer;
 
 public class Customer {
-    private String Id;
-    private String Name;
+    private String id;
+    private String name;
     private String birthDay;
     private String sex;
     private String identityCard;
@@ -16,8 +16,8 @@ public class Customer {
                     String sex, String identityCard,
                     String phone, String email,
                     String customerType, String address) {
-        Id = id;
-        Name = name;
+        this.id = id;
+        this.name = name;
         this.birthDay = birthDay;
         this.sex = sex;
         this.identityCard = identityCard;
@@ -28,19 +28,19 @@ public class Customer {
     }
 
     public String getId() {
-        return Id;
+        return id;
     }
 
     public void setId(String id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getBirthDay() {
@@ -102,8 +102,8 @@ public class Customer {
     @Override
     public String toString() {
         return "Customer{" +
-                "Id='" + Id + '\'' +
-                ", Name='" + Name + '\'' +
+                "Id='" + id + '\'' +
+                ", Name='" + name + '\'' +
                 ", birthDay='" + birthDay + '\'' +
                 ", sex=" + sex +
                 ", identityCard='" + identityCard + '\'' +

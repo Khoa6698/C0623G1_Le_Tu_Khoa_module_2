@@ -12,6 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Regex {
+
     public static boolean regexIdEmployee(String input) {
         String regex = "^NV-[0-9]{4}$";
         Pattern p = Pattern.compile(regex);
@@ -68,6 +69,13 @@ public class Regex {
         return m.matches();
     }
 
+    public static boolean regexGmail(String input){
+        String regex = "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(input);
+        return m.matches();
+    }
+
     public static boolean regexPhoneNumberEmployee(String input){
         String regex = "^0[0-9]{9}$";
         Pattern p = Pattern.compile(regex);
@@ -80,5 +88,65 @@ public class Regex {
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(input);
         return m.matches();
+    }
+
+    public static boolean validate(String string, String regex){
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(string);
+        return m.matches();
+    }
+    public static boolean checkArea(String input){
+        String regex = "^[3-9][0-9]|[1-9]{1}[0-9]{2,}$";
+        if(!validate(input,regex)){
+            System.out.println("Absurd!");
+            return false;
+        }else {
+            if (Double.parseDouble(input)<=30){
+                System.out.println("The number you enter must be greater than 30");
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean checkPrice(String input){
+        String regex = "^\\d{0,8}";
+        if(!validate(input,regex)){
+            System.out.println("Absurd!");
+            return false;
+        }else {
+            if(Double.parseDouble(input)<=0){
+                System.out.println("The number you enter must be greater than 0");
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean checkLimitPeopleAmount(String input){
+        String regex = "^[1-9]{1}|[1][0-9]$";
+        if(!validate(input,regex)){
+            System.out.println("Absurd!");
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    public static boolean regexIdFacility(String input) {
+        String regex = "^SVLV-[0-9]{4}|SVHO-[0-9]{4}|SVRO-[0-9]{4}$";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(input);
+        return m.matches();
+    }
+
+    public static boolean regexFreeTranslation(String input){
+        String regex = "^[a-zA-z\\\\d\\\\,]+$";
+        if(!validate(input,regex)){
+            System.out.println("Absurd!");
+            return false;
+        }else {
+            return true;
+        }
     }
 }

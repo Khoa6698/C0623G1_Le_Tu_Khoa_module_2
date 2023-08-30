@@ -1,8 +1,8 @@
 package case_study.model.entity.employee;
 
 public class Employee {
-    private String staffId;
-    private String staffName;
+    private String idStaff;
+    private String nameStaff;
     private String birthDay;
     private String sex;
     private String identityCard;
@@ -14,9 +14,9 @@ public class Employee {
 
     public Employee(){}
 
-    public Employee(String staffId, String staffName, String birthDay, String sex, String identityCard, String phone, String email, String levelType, String positionType, double salary) {
-        this.staffId = staffId;
-        this.staffName = staffName;
+    public Employee(String idStaff, String nameStaff, String birthDay, String sex, String identityCard, String phone, String email, String levelType, String positionType, double salary) {
+        this.idStaff = idStaff;
+        this.nameStaff = nameStaff;
         this.birthDay = birthDay;
         this.sex = sex;
         this.identityCard = identityCard;
@@ -27,20 +27,20 @@ public class Employee {
         this.salary = salary;
     }
 
-    public String getStaffId() {
-        return staffId;
+    public String getIdStaff() {
+        return idStaff;
     }
 
-    public void setStaffId(String staffId) {
-        this.staffId = staffId;
+    public void setIdStaff(String idStaff) {
+        this.idStaff = idStaff;
     }
 
-    public String getStaffName() {
-        return staffName;
+    public String getNameStaff() {
+        return nameStaff;
     }
 
-    public void setStaffName(String staffName) {
-        this.staffName = staffName;
+    public void setNameStaff(String nameStaff) {
+        this.nameStaff = nameStaff;
     }
 
     public String getBirthDay() {
@@ -110,8 +110,8 @@ public class Employee {
     @Override
     public String toString() {
         return "Employee{" +
-                "staffId='" + staffId + '\'' +
-                ", staffName='" + staffName + '\'' +
+                "staffId='" + idStaff + '\'' +
+                ", staffName='" + nameStaff + '\'' +
                 ", birthDay='" + birthDay + '\'' +
                 ", sex=" + sex +
                 ", identityCard='" + identityCard + '\'' +
