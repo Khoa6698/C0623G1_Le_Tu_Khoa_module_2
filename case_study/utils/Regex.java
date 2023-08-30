@@ -3,25 +3,21 @@ package case_study.utils;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.Period;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Regex {
 
-    public static boolean regexIdEmployee(String input) {
+    public static boolean regexId(String input) {
         String regex = "^NV-[0-9]{4}$";
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(input);
-        return m.matches();
+        return !m.matches();
     }
 
-    public static boolean CheckNameEmployee(String str) {
-        StringBuffer stringBuffer = new StringBuffer();
+    public static boolean CheckName(String str) {
+        StringBuilder stringBuffer = new StringBuilder();
         char ch = ' ';
         for (int i = 0; i < str.length(); i++) {
             if (ch == ' ' && str.charAt(i) != ' ')
@@ -33,7 +29,7 @@ public class Regex {
         }
         String nameInputValid = stringBuffer.toString().trim();
 
-        return str.equals(nameInputValid);
+        return !str.equals(nameInputValid);
     }
 
     public static boolean calculateAgeWithJodaTime(Date birthDate) {
@@ -41,7 +37,7 @@ public class Regex {
         long timeBetween = now.getTime() - birthDate.getTime();
         double yearsBetween = timeBetween / 3.15576e+10;
         int age = (int) Math.floor(yearsBetween);
-        return age >= 18;
+        return age < 18;
     }
 
     public static Date covertStringToDate(String birthDate) {
@@ -55,63 +51,63 @@ public class Regex {
         return birthDateUtil;
     }
 
-    public static String covertDateToString(Date birthDate) {
-        String pattern = "dd-MM-yyyy";
-        DateFormat df = new SimpleDateFormat(pattern);
-        birthDate = Calendar.getInstance().getTime();
-        return df.format(birthDate);
-    }
+//    public static String covertDateToString(Date birthDate) {
+//        String pattern = "dd-MM-yyyy";
+//        DateFormat df = new SimpleDateFormat(pattern);
+//        birthDate = Calendar.getInstance().getTime();
+//        return df.format(birthDate);
+//    }
 
-    public static boolean regexIdCardEmployee(String input){
+    public static boolean regexIdCard(String input){
         String regex = "^[0-9]{9,12}$";
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(input);
-        return m.matches();
+        return !m.matches();
     }
 
-    public static boolean regexGmail(String input){
+    public static boolean gmailRegex(String input){
         String regex = "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}";
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(input);
-        return m.matches();
+        return !m.matches();
     }
 
     public static boolean regexPhoneNumberEmployee(String input){
         String regex = "^0[0-9]{9}$";
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(input);
-        return m.matches();
+        return !m.matches();
     }
 
     public static boolean regexIdCustomer(String input) {
         String regex = "^KH-[0-9]{4}$";
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(input);
-        return m.matches();
+        return !m.matches();
     }
 
     public static boolean validate(String string, String regex){
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(string);
-        return m.matches();
+        return !m.matches();
     }
     public static boolean checkArea(String input){
         String regex = "^[3-9][0-9]|[1-9]{1}[0-9]{2,}$";
-        if(!validate(input,regex)){
+        if(validate(input, regex)){
             System.out.println("Absurd!");
-            return false;
+            return true;
         }else {
             if (Double.parseDouble(input)<=30){
                 System.out.println("The number you enter must be greater than 30");
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     public static boolean checkPrice(String input){
         String regex = "^\\d{0,8}";
-        if(!validate(input,regex)){
+        if(validate(input, regex)){
             System.out.println("Absurd!");
             return false;
         }else {
@@ -125,11 +121,11 @@ public class Regex {
 
     public static boolean checkLimitPeopleAmount(String input){
         String regex = "^[1-9]{1}|[1][0-9]$";
-        if(!validate(input,regex)){
+        if(validate(input, regex)){
             System.out.println("Absurd!");
-            return false;
-        }else {
             return true;
+        }else {
+            return false;
         }
     }
 
@@ -142,11 +138,32 @@ public class Regex {
 
     public static boolean regexFreeTranslation(String input){
         String regex = "^[a-zA-z\\\\d\\\\,]+$";
-        if(!validate(input,regex)){
+        if(validate(input, regex)){
             System.out.println("Absurd!");
             return false;
         }else {
             return true;
         }
+    }
+
+    public static boolean regexIdVilla(String input) {
+        String regex = "^SVVL-[0-9]{4}$";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(input);
+        return m.matches();
+    }
+
+    public static boolean regexIdRoom(String input) {
+        String regex = "^SVRO-[0-9]{4}$";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(input);
+        return m.matches();
+    }
+
+    public static boolean regexIdHouse(String input) {
+        String regex = "^SVHO-[0-9]{4}$";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(input);
+        return m.matches();
     }
 }

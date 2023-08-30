@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 public class FacilityRepository implements IFacilityRepository {
- private static Map<Facility,Integer> facilityIntegerMap = new HashMap<>();
+ private static final Map<Facility,Integer> facilityIntegerMap = new HashMap<>();
 
 
     @Override

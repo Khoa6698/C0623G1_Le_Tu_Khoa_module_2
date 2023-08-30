@@ -1,7 +1,6 @@
 package case_study.model.entity.facility;
 
 public class Room extends Facility {
-    private static int idRoom = 1000;
     private String freeService;
 
     public Room(String freeService) {
@@ -10,8 +9,7 @@ public class Room extends Facility {
 
     public Room(String id, String name, String area, String price, String limitPeopleAmount, String hireType, String freeService) {
         super(id, name, area, price, limitPeopleAmount, hireType);
-        idRoom++;
-        this.setId("SVRO-"+idRoom);
+
         this.freeService = freeService;
     }
 

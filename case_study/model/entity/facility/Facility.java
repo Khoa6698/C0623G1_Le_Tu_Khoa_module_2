@@ -1,6 +1,6 @@
 package case_study.model.entity.facility;
 
-public abstract class Facility {
+public class Facility {
     private String id;
     private String name;
     private String area;

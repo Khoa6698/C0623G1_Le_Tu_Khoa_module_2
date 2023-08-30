@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class FacilityMenu {
     private final Scanner scanner = new Scanner(System.in);
-    private final Regex  regex = new Regex();
+//    private final Regex  regex = new Regex();
     private final FacilityController facilityController = new FacilityController();
 
     public void facilityRender() {
@@ -62,8 +62,7 @@ public class FacilityMenu {
     }
 
     public Facility inputOptionFacility(){
-        Facility facility = new Facility() {
-        };
+        Facility facility = new Facility();
 
         int option;
         do {
@@ -76,17 +75,45 @@ public class FacilityMenu {
                 System.out.println("Your selection is not valid!");
             }
         }while (option<=0||option>3);
+        String id = null;
+        switch (option) {
+            case 1 -> {
+                System.out.println("Enter id Villa (Ex: SVVL-1234)");
+                id = scanner.nextLine();
+                while (!Regex.regexIdVilla(id)) {
+                    System.out.println("The id you entered is not valid!");
+                    id = scanner.next();
+                }
+            }
+            case 2 -> {
+                System.out.println("Enter id House (Ex: SVHO-1234)");
+                id = scanner.nextLine();
+                while (!Regex.regexIdHouse(id)) {
+                    System.out.println("The id you entered is not valid!");
+                    id = scanner.next();
+                }
+            }
+            case 3 -> {
+                System.out.println("Enter id Room (Ex: SVRO-1234)");
+                id = scanner.nextLine();
+                while (!Regex.regexIdRoom(id)) {
+                    System.out.println("The id you entered is not valid!");
+                    id = scanner.next();
+                }
+            }
+        }
+        facility.setId(id);
         String name;
         do {
             System.out.println("Enter name ? (VD: House)");
             name = scanner.next();
-        }while (!Regex.CheckNameEmployee(name));
+        }while (Regex.CheckName(name));
         facility.setName(name);
         String area;
         do {
             System.out.println("Enter room size");
             area = scanner.nextLine();
-        }while (!Regex.checkArea(area));
+        }while (Regex.checkArea(area));
         facility.setArea(area);
         String price;
         do {
@@ -98,7 +125,7 @@ public class FacilityMenu {
         do {
             System.out.println("Enter the number of people");
             limitPeopleAmount = scanner.nextLine();
-        }while (!Regex.checkLimitPeopleAmount(limitPeopleAmount));
+        }while (Regex.checkLimitPeopleAmount(limitPeopleAmount));
         facility.setLimitPeopleAmount(limitPeopleAmount);
 
             System.out.println("Enter your rental period: ");
@@ -121,50 +148,46 @@ public class FacilityMenu {
             case 4 -> hireType = "By hour";
         }
         facility.setHireType(hireType);
-        switch (option){
-            case 1:
+        switch (option) {
+            case 1 -> {
                 String roomStandardVilla;
                 do {
                     System.out.println("Enter room standard:");
                     roomStandardVilla = scanner.nextLine();
-                }while (!Regex.CheckNameEmployee(roomStandardVilla));
-
+                } while (Regex.CheckName(roomStandardVilla));
                 String swimmingArea;
                 do {
                     System.out.println("Enter pool area:");
                     swimmingArea = scanner.nextLine();
-                }while (!Regex.checkArea(swimmingArea));
+                } while (Regex.checkArea(swimmingArea));
                 String numFloorsVilla;
                 do {
                     System.out.println("Enter floor number:");
                     numFloorsVilla = scanner.nextLine();
-                }while (!Regex.checkLimitPeopleAmount(numFloorsVilla));
-
-                facility = new Villa(null,name,area,price,limitPeopleAmount,hireType,roomStandardVilla,swimmingArea,numFloorsVilla);
-                break;
-            case 2:
+                } while (Regex.checkLimitPeopleAmount(numFloorsVilla));
+                facility = new Villa(id, name, area, price, limitPeopleAmount, hireType, roomStandardVilla, swimmingArea, numFloorsVilla);
+            }
+            case 2 -> {
                 String freeService;
                 do {
                     System.out.println("Free translation is included:");
                     freeService = scanner.nextLine();
-                }while (!Regex.regexFreeTranslation(freeService));
-
-                facility = new Room(null,name,area,price,limitPeopleAmount,hireType,freeService);
-                break;
-            case 3:
+                } while (!Regex.regexFreeTranslation(freeService));
+                facility = new Room(id, name, area, price, limitPeopleAmount, hireType, freeService);
+            }
+            case 3 -> {
                 String roomStandardHouse;
                 do {
                     System.out.println("Enter room standard:");
                     roomStandardHouse = scanner.nextLine();
-                }while (!Regex.CheckNameEmployee(roomStandardHouse));
+                } while (Regex.CheckName(roomStandardHouse));
                 String numFloorsHouse;
                 do {
                     System.out.println("Enter floor number:");
                     numFloorsHouse = scanner.nextLine();
-                }while (!Regex.checkLimitPeopleAmount(numFloorsHouse));
-
-                facility = new House(null,name,area,price,limitPeopleAmount,hireType,roomStandardHouse,numFloorsHouse);
-                break;
+                } while (Regex.checkLimitPeopleAmount(numFloorsHouse));
+                facility = new House(id, name, area, price, limitPeopleAmount, hireType, roomStandardHouse, numFloorsHouse);
+            }
         }
         return facility;
     }

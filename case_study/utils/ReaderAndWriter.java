@@ -18,8 +18,6 @@ public class ReaderAndWriter {
                 productList.add(line);
             }
 
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {

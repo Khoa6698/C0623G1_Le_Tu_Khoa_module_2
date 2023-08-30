@@ -11,26 +11,26 @@ public class CustomerService implements ICustomerService {
     private static final ICustomerRepository customerRepository = new CustomerRepository();
     @Override
     public List<Customer> getCustomer() {
-        return this.customerRepository.getCustomer();
+        return customerRepository.getCustomer();
     }
 
     @Override
     public void createCustomer(Customer customer) {
-        this.customerRepository.createCustomer(customer);
+        customerRepository.createCustomer(customer);
     }
 
     @Override
     public void updateCustomer(String id, Customer customer) {
-        this.customerRepository.updateCustomer(id,customer);
+        customerRepository.updateCustomer(id,customer);
     }
 
     @Override
     public void deleteCustomer(String id) {
-        this.customerRepository.deleteCustomer(id);
+        customerRepository.deleteCustomer(id);
     }
 
     @Override
     public List<Customer> searchCustomer(String name) {
-        return this.customerRepository.searchCustomer(name);
+        return customerRepository.searchCustomer(name);
     }
 }

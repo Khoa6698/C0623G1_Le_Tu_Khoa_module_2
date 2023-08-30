@@ -63,21 +63,21 @@ public class CustomerMenu {
         Customer customer = new Customer();
         System.out.println("Enter id customer: ");
         String id = scanner.nextLine();
-        while (!Regex.regexIdCustomer(id)) {
+        while (Regex.regexIdCustomer(id)) {
             System.out.println("The id you entered is not valid! ");
             id = scanner.next();
         }
         customer.setId(id);
         System.out.println("Enter name customer: ");
         String name = scanner.nextLine();
-        while (!Regex.CheckNameEmployee(name)) {
+        while (Regex.CheckName(name)) {
             System.out.println("The name you enteredisis not valid!");
             name = scanner.next();
         }
         customer.setName(name);
         System.out.println("Enter birthday customer: ");
         String birthDay = scanner.nextLine();
-        while (!Regex.calculateAgeWithJodaTime(Regex.covertStringToDate(birthDay))) {
+        while (Regex.calculateAgeWithJodaTime(Regex.covertStringToDate(birthDay))) {
             System.out.println("You are not old enough!");
             birthDay = scanner.next();
         }
@@ -87,21 +87,21 @@ public class CustomerMenu {
         customer.setSex(sex);
         System.out.println("Enter ID card customer: ");
         String idCard = scanner.nextLine();
-        while (!Regex.regexIdCardEmployee(idCard)) {
+        while (Regex.regexIdCard(idCard)) {
             System.out.println("The ID card you entered is not valid!!");
             idCard = scanner.next();
         }
         customer.setIdentityCard(idCard);
         System.out.println("Enter phone number: ");
         String phone = scanner.nextLine();
-        while (!Regex.regexPhoneNumberEmployee(phone)) {
+        while (Regex.regexPhoneNumberEmployee(phone)) {
             System.out.println("The number phone you entered is not valid!");
             phone = scanner.next();
         }
         customer.setPhone(phone);
         System.out.println("Enter gmail customer:");
         String email = scanner.nextLine();
-        while (!Regex.regexGmail(email)){
+        while (Regex.gmailRegex(email)){
             System.out.println("Email is not valid!");
             email = scanner.next();
         }
@@ -137,7 +137,7 @@ public class CustomerMenu {
         do {
             System.out.println("Enter the customer id you want to search: ");
             string = scanner.nextLine();
-        }while (!Regex.regexIdCustomer(string));
+        }while (Regex.regexIdCustomer(string));
         return string;
     }
     public String inputNameCustomer(){
@@ -145,7 +145,7 @@ public class CustomerMenu {
         do {
             System.out.println("Enter the customer name is you want to search: ");
             name = scanner.nextLine();
-        }while (!Regex.CheckNameEmployee(name));
+        }while (Regex.CheckName(name));
         return name;
     }
 }

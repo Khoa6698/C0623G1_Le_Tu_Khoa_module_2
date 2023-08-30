@@ -1,20 +1,12 @@
 package case_study.model.entity.facility;
 
 public class House extends Facility {
-    private static int idHouse = 1000;
     private String roomStandardHouse;
     private String numFloorsHouse;
 
 
-    public House( String parseDouble, String price, String limitPeopleAmount, String hireType, String roomStandardHouse, String numFloorsHouse) {
-        this.roomStandardHouse = roomStandardHouse;
-        this.numFloorsHouse = numFloorsHouse;
-    }
-
     public House( String id, String name, String area, String price, String limitPeopleAmount, String hireType, String roomStandardHouse, String numFloorsHouse) {
         super(id, name, area, price, limitPeopleAmount, hireType);
-        idHouse++;
-        this.setId("SVHO-"+idHouse);
         this.roomStandardHouse = roomStandardHouse;
         this.numFloorsHouse = numFloorsHouse;
     }

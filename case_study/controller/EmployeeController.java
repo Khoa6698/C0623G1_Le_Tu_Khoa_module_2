@@ -10,22 +10,22 @@ public class EmployeeController {
     private static final IEmployeeService employeeService = new EmployeeService();
 
     public List<Employee> getEmployee() {
-        return this.employeeService.getEmployee();
+        return employeeService.getEmployee();
     }
 
     public void createEmployee(Employee employee) {
-        this.employeeService.createEmployee(employee);
+        employeeService.createEmployee(employee);
     }
 
     public void updateEmployee(String id, Employee employee) {
-        this.employeeService.updateEmployee(id, employee);
+        employeeService.updateEmployee(id, employee);
     }
 
     public boolean deleteEmployee(String id) {
-        return this.employeeService.deleteEmployee(id);
+        return employeeService.deleteEmployee(id);
     }
 
     public List<Employee> searchEmployee(String name) {
-        return this.employeeService.searchEmployee(name);
+        return employeeService.searchEmployee(name);
     }
 }

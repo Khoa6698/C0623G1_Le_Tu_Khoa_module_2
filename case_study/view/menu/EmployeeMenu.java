@@ -66,21 +66,21 @@ public class   EmployeeMenu {
         Employee employee = new Employee();
         System.out.println("Enter id staff: ");
         String id = scanner.nextLine();
-        while (!Regex.regexIdEmployee(id)) {
+        while (Regex.regexId(id)) {
             System.out.println("The id you entered is not valid!");
             id = scanner.next();
         }
         employee.setIdStaff(id);
         System.out.println("Enter name staff: ");
         String name = scanner.nextLine();
-        while (!Regex.CheckNameEmployee(name)) {
+        while (Regex.CheckName(name)) {
             System.out.println("The name you entered is not valid!");
             name = scanner.next();
         }
         employee.setNameStaff(name);
         System.out.println("Enter birthday: ");
         String birthDay = scanner.nextLine();
-        while (!Regex.calculateAgeWithJodaTime(Regex.covertStringToDate(birthDay))) {
+        while (Regex.calculateAgeWithJodaTime(Regex.covertStringToDate(birthDay))) {
             System.out.println("You are not old enough!");
             birthDay = scanner.next();
         }
@@ -90,21 +90,21 @@ public class   EmployeeMenu {
         employee.setSex(sex);
         System.out.println("Enter your ID card: ");
         String idCard = scanner.nextLine();
-        while (!Regex.regexIdCardEmployee(idCard)) {
+        while (Regex.regexIdCard(idCard)) {
             System.out.println("The id card you entered is not valid! !");
             idCard = scanner.next();
         }
         employee.setIdentityCard(idCard);
         System.out.println("Enter your phone: ");
         String phone = scanner.nextLine();
-        while (!Regex.regexPhoneNumberEmployee(phone)) {
+        while (Regex.regexPhoneNumberEmployee(phone)) {
             System.out.println("The phone number you entered is not valid!");
             phone = scanner.next();
         }
         employee.setPhone(phone);
         System.out.println("Enter your email:");
         String email = scanner.nextLine();
-        while (!Regex.regexGmail(email)){
+        while (Regex.gmailRegex(email)){
             System.out.println("Email is not valid!");
             email = scanner.next();
         }
@@ -122,18 +122,10 @@ public class   EmployeeMenu {
             level = Integer.parseInt(scanner.nextLine());
         } while (level <= 0 || level > 4);
         switch (level) {
-            case 1:
-                levelString = "Intermediate";
-                break;
-            case 2:
-                levelString = "College";
-                break;
-            case 3:
-                levelString = "University";
-                break;
-            case 4:
-                levelString = "AfterUniversity";
-                break;
+            case 1 -> levelString = "Intermediate";
+            case 2 -> levelString = "College";
+            case 3 -> levelString = "University";
+            case 4 -> levelString = "AfterUniversity";
         }
         employee.setLevelType(levelString);
         System.out.println("Choose by number below  :");
@@ -152,24 +144,12 @@ public class   EmployeeMenu {
         } while (number2 <= 0 || number2 > 6);
 
         switch (number2) {
-            case 1:
-                positionString = "Receptionists";
-                break;
-            case 2:
-                positionString = "Staff";
-                break;
-            case 3:
-                positionString = "Expert";
-                break;
-            case 4:
-                positionString = "Supervisory";
-                break;
-            case 5:
-                positionString = "Management";
-                break;
-            case 6:
-                positionString = "Manager";
-                break;
+            case 1 -> positionString = "Receptionists";
+            case 2 -> positionString = "Staff";
+            case 3 -> positionString = "Expert";
+            case 4 -> positionString = "Supervisory";
+            case 5 -> positionString = "Management";
+            case 6 -> positionString = "Manager";
         }
         employee.setPositionType(positionString);
         System.out.println("enter your salary: ");
@@ -187,7 +167,7 @@ public class   EmployeeMenu {
         do {
             System.out.println("Enter id staff:");
             string = scanner.nextLine();
-        } while (!Regex.regexIdEmployee(string));
+        } while (Regex.regexId(string));
         return string;
     }
 
@@ -196,7 +176,7 @@ public class   EmployeeMenu {
         do {
             System.out.println("Enter name staff:");
             name = scanner.nextLine();
-        } while (!Regex.CheckNameEmployee(name));
+        } while (Regex.CheckName(name));
         return name;
     }
 }
